@@ -2,6 +2,11 @@ import csv
 import boto3
 import os.path
 
+#informacoes necessario solicitadas ao usuario
+region =  input('Digite o código da região: ')
+max_labels = int(input('Digite a quantidade máxima de retorno: '))
+min_confidence = int(input('Digite a confiança minima de acerto: '))
+
 ## Seleciona a imagem a ser analizada ##
 while True:
     photo = input('Digite o nome da imagem: ')
@@ -44,10 +49,6 @@ def detect_labels(region, secret_access_key, access_key_id, photo, max_labels, m
 
     return response['Labels']
 #############################################
-
-region = 'us-east-2' #Região conforme escolhido na criação da conta.
-max_labels = 10 #Numero de retorno dos objetos reconhecidos.
-min_confidence = 90 #nivel de acerto.
 
 #Exibe a detecção
 print(f'Analise da imagem {photo} iniciada, aguarde...')
